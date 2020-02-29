@@ -27,7 +27,7 @@ function createWindow () {
     windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
   }
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
