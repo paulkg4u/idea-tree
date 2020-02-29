@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Idea Tree</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- Latest compiled and minified CSS -->
+
+<body>
+<script src="app.js"></script>
+<body id = "body" ng-app = "ideaTree">
+     <!-- NAVBAR COMPONENT -->
+     <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <span class="font-bold text-xl">IdeaTree</span>
+        </div>
+  
+        <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
+            <a ng-click = "addIdea()"
+            href="#"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 md:mt-0"
+            >Add Idea</a
+          >
+          <div>
+            
+          </div>
+        </div>
+      </nav>
+
+    <div class = "container mt-5 mx-auto overflow-y-auto" style="height:90vh">
+        <div class = "container" ng-show = "!addingIdea" ui-view></div>
+        <div ng-show = "addingIdea">
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+

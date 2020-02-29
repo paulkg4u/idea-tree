@@ -1,0 +1,22 @@
+{
+  "name": "idea_tree",
+  "version": "1.0.0",
+  "description": "sample app to store ideas and thoughts in a local excel sheet",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "paulkg4u",
+  "license": "MIT",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.24",
+    "angular": "^1.7.9",
+    "exceljs": "^3.8.0",
+    "ngstorage": "^0.3.11",
+    "tailwindcss": "^1.2.0",
+    "xlsx": "^0.15.5"
+  },
+  "devDependencies": {
+    "electron": "^8.0.2"
+  }
+}
