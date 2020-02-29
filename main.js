@@ -1,21 +1,31 @@
 const { app, BrowserWindow } = require('electron')
-
+const path = require('path')
 
 function createWindow () {
-  // Create the browser window.
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+
+  const windowOptions = {
+    width: 1080,
+    minWidth: 680,
+    height: 840,
+    title: app.getName(),
     webPreferences: {
       nodeIntegration: true
     }
-  })
+  }
+
+  if (process.platform === 'linux') {
+    windowOptions.icon = path.join(__dirname, '/assets/icon.png');
+  }
+  // Create the browser window.
+  const win = new BrowserWindow(windowOptions);
 
   // and load the index.html of the app.
   
   win.loadFile('index.html')
   
-
+  if (process.platform === 'linux') {
+    windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
+  }
   // Open the DevTools.
   win.webContents.openDevTools()
 }

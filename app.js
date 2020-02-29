@@ -20,17 +20,28 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
         $rootScope.newIdea = {
             'title' : '',
             'description' : '',
+            'team' : '',
             'team_members':'',
             'tags' : '',
-            'created_at' : '',
+            'created_at' : new Date(),
             'completion_date' : '',
-            'team_members' : '',
+            'created_by' : '',
             'category' : ''
         };
     };
 
     $rootScope.saveIdea = function(){
-        IdeaSheetService.addRowToIdeas(); 
+        console.log($rootScope.newIdea);
+        IdeaSheetService.addRowToIdeas($rootScope.newIdea).then(function(){
+            IdeaSheetService.getCurrentRows().then(function(){
+                $rootScope.addingIdea = false;
+            }, function(){
+                console.log("could not load new")
+            });
+        }, function(){
+            $rootScope.addingIdea = false;
+        }); 
+        
     };
 
 

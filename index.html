@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,35 +11,106 @@
 
 <!-- Latest compiled and minified CSS -->
 
-<body>
-<script src="app.js"></script>
-<body id = "body" ng-app = "ideaTree">
-     <!-- NAVBAR COMPONENT -->
-     <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <span class="font-bold text-xl">IdeaTree</span>
-        </div>
-  
-        <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
-            <a ng-click = "addIdea()"
-            href="#"
-            class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 md:mt-0"
-            >Add Idea</a
-          >
-          <div>
-            
-          </div>
-        </div>
-      </nav>
 
-    <div class = "container mt-5 mx-auto overflow-y-auto" style="height:90vh">
-        <div class = "container" ng-show = "!addingIdea" ui-view></div>
-        <div ng-show = "addingIdea">
+    <script src="app.js"></script>
 
+    <body id="body" ng-app="ideaTree">
+        <!-- NAVBAR COMPONENT -->
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex flex-col items-center flex-shrink-0 text-white mr-6">
+                <span class="font-bold text-xl leading-none">Idea<br>Tree</span>
+                <!-- <span class="font-bold text-xl">Tree</span> -->
+            </div>
+
+            <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto justify-end">
+                <a ng-show="!addingIdea" ng-click="addIdea()" href="#"
+                    class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 md:mt-0">Add
+                    Idea</a>
+                <div>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5 mx-auto overflow-y-auto" style="height:90vh">
+            <div class="container" ng-show="!addingIdea" ui-view></div>
+
+            <div class="container md:flex flex-wrap flex-center " ng-show="addingIdea">
+                <div class="m8 h-auto flex flex-col w-full">
+                    <div class="bg-blue-500 flex w-full items-center justify-between p-4 text-white">
+                        <div>
+                            Add New Idea
+                        </div>
+
+                        <div class="cursor-pointer leading-none text-2xl" ng-click="addIdea()">
+                            x
+                        </div>
+                    </div>
+                    <div class="bg-gray-300 w-full p-4">
+                        <form class="bg-white shadow-md rounded p-1 flex flex-wrap">
+                            
+                            <div class="m-2 w-full">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+                                    Title
+                                </label>
+                                <input ng-model="newIdea.title"
+                                    class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 w-full focus:outline-none focus:shadow-outline"
+                                    id="title" type="text" placeholder="Idea Title">
+                            </div>
+                            <div class="m-2 w-full">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                                    Description
+                                </label>
+                                <textarea ng-model="newIdea.description"
+                                    class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 w-full focus:outline-none focus:shadow-outline"
+                                    id="description"></textarea>
+                            </div>
+                            <div class = "m-2 w-full">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="team_members">
+                                    Team Members
+                                </label>
+                                <input ng-model = "newIdea.team_members" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 w-full focus:outline-none focus:shadow-outline" id="team_members" type="text" placeholder="Team Members">
+                            </div>
+                            <div class = "m-2 w-full">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="team_members">
+                                    Tags
+                                </label>
+                                <input ng-model = "newIdea.tags" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 w-full focus:outline-none focus:shadow-outline" id="tags" type="text" placeholder="tags">
+                            </div>
+                            <div class = "p-2 sm:w-auto md:w-1/4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
+                                    Category
+                                </label>
+                                <input ng-model = "newIdea.category" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 focus:outline-none focus:shadow-outline" id="category" type="text" placeholder="Category">
+                            </div>
+                            <div class = "p-2 sm:w-auto md:w-1/4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="team">
+                                    Team
+                                </label>
+                                <input ng-model = "newIdea.team" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 focus:outline-none focus:shadow-outline" id="team" type="text" placeholder="Team Name">
+                            </div>
+                            <div class = "p-2 sm:w-auto md:w-1/4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="created_by">
+                                    Created By
+                                </label>
+                                <input ng-model = "newIdea.created_by" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 focus:outline-none focus:shadow-outline" id="created_by" type="text" placeholder="Created By">
+                            </div>
+                            <div class = "p-2 sm:w-auto md:w-1/4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="completion_date">
+                                    Completion Date
+                                </label>
+                                <input ng-model = "newIdea.completion_date" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 focus:outline-none focus:shadow-outline" id="completion_date" type="date" placeholder="Completion Date">
+                            </div>
+                        </form>
+                        <div class = "w-full flex justify-center mt-4">
+                            <button ng-click = "saveIdea()" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
+                                Submit Idea
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
+
 </html>
-
-
-
