@@ -1,5 +1,3 @@
-
-console.log("hello");
 var angular = require('angular');
 var uiRouter = require('@uirouter/angularjs');
 
@@ -26,7 +24,8 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
             'created_at' : new Date(),
             'completion_date' : '',
             'created_by' : '',
-            'category' : ''
+            'category' : '',
+            'status':''
         };
     };
 

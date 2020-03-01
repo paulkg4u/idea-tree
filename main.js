@@ -20,8 +20,8 @@ function createWindow () {
   const win = new BrowserWindow(windowOptions);
 
   // and load the index.html of the app.
-  
-  win.loadFile('index.html')
+  win.removeMenu();
+  win.loadFile('index.html');
   
   if (process.platform === 'linux') {
     windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
