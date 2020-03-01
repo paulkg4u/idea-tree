@@ -22,10 +22,7 @@ function createWindow () {
   // and load the index.html of the app.
   win.removeMenu();
   win.loadFile('index.html');
-  
-  if (process.platform === 'linux') {
-    windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
-  }
+
   // Open the DevTools.
   // win.webContents.openDevTools()
 }
