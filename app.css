@@ -2,3 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.status{
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-upcoming{
+    background-color: #f6ad55aa;
+}
+
+.status-ongoing{
+    background-color: #63b3ed80;
+}
+
+.status-dropped{
+    background-color: #a0aec0;
+}
+
+.status-completed{
+    background-color: #68d39180;
+}
+
+.status-option{
+    font-size: large;
+}
+
+.min-height-90{
+    height: 95%;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.ui-combobox { display: inline-block; margin: 0; margin-right: 1.8em; position: relative; }
+.ui-combobox-input { padding: 0.2em; margin: 0; }
+.ui-combobox-button { position: absolute; width: 1.8em !important; margin: 0; margin-left: -1px; top: 0; bottom: 0; }
+.ui-combobox-button .ui-button-text { padding: 0em; }
+.ui-combobox .ui-autocomplete { max-height: 10em; overflow-y: auto; overflow-x: hidden; }
