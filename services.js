@@ -77,14 +77,16 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
         var deferred = $q.defer();
         $rootScope.ideas = [];
         ideas_worksheet.eachRow(function(row, index){
-            console.log(row.getCell('status').value);
             if(index > 1){
                 var rowData ={};
                 $rootScope.ideas_schema.forEach(function(key){
                     rowData[key] = row.getCell(key).value;
+                    if(rowData[key] == null){
+                        rowData[key] = '';
+                    }
                 });
                 $rootScope.ideas.push(rowData);
-                
+                console.log(rowData);
             }
         });
         deferred.resolve(true);

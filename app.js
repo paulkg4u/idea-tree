@@ -9,6 +9,9 @@ require('./services');
 
 ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$state, IdeaSheetService){
     $rootScope.addingIdea = false;
+    $rootScope.filterStatus = '';
+    $rootScope.filterTeam = '';
+    $rootScope.filterMember = '';
     IdeaSheetService.initializeWorkBook().then(function(){
         $state.go('home');
         IdeaSheetService.getCurrentRows();

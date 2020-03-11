@@ -55,4 +55,19 @@ ideaTree.controller('homeCtrl', ['$rootScope','$scope','IdeaSheetService', funct
         }
     };
 
+
+    $scope.ideaFilter = function(idea){
+        if($rootScope.filterStatus == null){
+            $rootScope.filterStatus = '';
+        }
+        if($rootScope.filterMember == null){
+            $rootScope.filterMember = '';
+        }
+        if($rootScope.filterTeam == null){
+            $rootScope.filterTeam = '';
+        }
+        console.log($rootScope.filterStatus);
+        // console.log(idea.status.includes($rootScope.filterStatus) && idea.created_by.includes($rootScope.filterMember) && idea.team.includes($rootScope.filterTeam));
+        return (idea.status.includes($rootScope.filterStatus) && idea.created_by.includes($rootScope.filterMember) && idea.team.includes($rootScope.filterTeam));
+    }
 }]);
