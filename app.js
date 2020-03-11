@@ -1,7 +1,10 @@
+global.jQuery = require('jquery');
 var angular = require('angular');
 var uiRouter = require('@uirouter/angularjs');
-
-var ideaTree = angular.module('ideaTree', ['ui.router']);
+var ngAnimate = require('angular-animate');
+var angularAria = require('angular-aria');
+var angularMaterial = require('angular-material');
+var ideaTree = angular.module('ideaTree', ['ui.router', 'ngAnimate','ngAria','ngMaterial']);
 require('./services');
 
 ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$state, IdeaSheetService){
@@ -9,6 +12,8 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     IdeaSheetService.initializeWorkBook().then(function(){
         $state.go('home');
         IdeaSheetService.getCurrentRows();
+        IdeaSheetService.getTeams();
+        IdeaSheetService.getMembers();
     }, function(){
         console.log("error");
     });
@@ -28,6 +33,21 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
             'status':''
         };
     };
+
+    $rootScope.$watch(function(){
+        return $rootScope.filterStatus;
+    }, function(){
+        console.log($rootScope.filterStatus);
+        if($rootScope.filterStatus == ''){
+            $rootScope.filterStatus = null;
+        }
+    }, true);
+
+    $rootScope.clearFilter = function () {
+        $rootScope.filterStatus = '';
+        $rootScope.filterTeam = '';
+        $rootScope.filterMember = '';
+    }
 
     $rootScope.saveIdea = function(){
         console.log($rootScope.newIdea);

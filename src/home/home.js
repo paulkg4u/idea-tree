@@ -21,8 +21,6 @@ ideaTree.controller('homeCtrl', ['$rootScope','$scope','IdeaSheetService', funct
         
     };
 
-    
-
     $scope.toggleEdit = function(){
         $scope.editIdea = !$scope.editIdea;
         $scope.editedIdea = {};
@@ -42,4 +40,19 @@ ideaTree.controller('homeCtrl', ['$rootScope','$scope','IdeaSheetService', funct
         }
         
     }
+
+    $scope.getStatusClass = function(status){
+        if(status == 'upcoming'){
+            return 'status status-upcoming';
+        }else if(status == 'ongoing'){
+            return 'status status-ongoing';
+        }else if(status == 'completed'){
+            return 'status status-completed';
+        }else if(status == 'dropped'){
+            return 'status status-dropped';
+        }else{
+            return 'status';
+        }
+    };
+
 }]);

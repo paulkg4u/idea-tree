@@ -13965,6 +13965,37 @@ video {
   transition-duration: 1000ms;
 }
 
+.status{
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-upcoming{
+  background-color: #f6ad55aa;
+}
+
+.status-ongoing{
+  background-color: #63b3ed80;
+}
+
+.status-dropped{
+  background-color: #a0aec0;
+}
+
+.status-completed{
+  background-color: #68d39180;
+}
+
+.status-option{
+  font-size: large;
+}
+
+.min-height-90{
+  height: 95%;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
@@ -67340,4 +67371,3 @@ video {
     transition-duration: 1000ms;
   }
 }
-
