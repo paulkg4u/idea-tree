@@ -15,7 +15,7 @@
 <body id="body" ng-app="ideaTree" style="height: 100vh;">
     <!-- NAVBAR COMPONENT -->
     <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-2 px-6"
-        style="height:10vh; background-color: #009999;">
+        style="background-color: #009999;">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
             <span class="font-bold text-xl leading-none">Idea Tree</span>
             <!-- <span class="font-bold text-xl">Tree</span> -->
@@ -131,12 +131,14 @@
                                 id="category" type="text" placeholder="Category">
                         </div>
                         <div class="p-2 sm:w-auto md:w-1/4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="team">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="completion_date">
                                 Team
                             </label>
-                            <input ng-model="newIdea.team"
-                                class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 focus:outline-none focus:shadow-outline"
-                                id="team" type="text" placeholder="Team Name">
+                            <div class = "relative">
+                                <select ng-model = "newIdea.team" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
+                                    <option ng-repeat = "eachTeam in teams"value="{{eachTeam.team_name}}" class = "status-option">{{eachTeam.team_name}}</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="p-2 sm:w-auto md:w-1/4">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="created_by">
