@@ -12,7 +12,14 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     $rootScope.filterStatus = '';
     $rootScope.filterTeam = '';
     $rootScope.filterMember = '';
-    IdeaSheetService.initializeWorkBook().then(function(){
+    let dev = true;
+    let filePath;
+    if (dev){
+         filePath = 'data.xlsx'
+    }else{
+        filePath = '\\inunivsie02\DTS_SRV\TECOM\TECOM_shared\idea_tree-x64\data.xlsx'
+    }
+    IdeaSheetService.initializeWorkBook(filePath).then(function(){
         $state.go('home');
         IdeaSheetService.getCurrentRows();
         IdeaSheetService.getTeams();
@@ -20,7 +27,8 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     }, function(){
         console.log("error");
     });
-
+    $rootScope.newIdea = {};
+    $rootScope.newIdeaTeam = null;
     $rootScope.addIdea = function(){
         $rootScope.addingIdea = !$rootScope.addingIdea;
         $rootScope.newIdea = {
@@ -51,9 +59,19 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
         $rootScope.filterTeam = '';
         $rootScope.filterMember = '';
     }
+    $rootScope.selectedTeamId = 0;
+    $rootScope.$watch(function(){
+        return $rootScope.newIdeaTeam;
+    }, function(){
+        if($rootScope.newIdeaTeam){
+            $rootScope.selectedTeamId = JSON.parse($rootScope.newIdeaTeam)["id"];
+            $rootScope.newIdea.team = SON.parse($rootScope.newIdeaTeam)["team_name"]; 
+            $rootScope.newIdea.created_by = '';
+        };
+        
+    }, true);
 
     $rootScope.saveIdea = function(){
-        console.log($rootScope.newIdea);
         IdeaSheetService.addRowToIdeas($rootScope.newIdea).then(function(){
             IdeaSheetService.getCurrentRows().then(function(){
                 $rootScope.addingIdea = false;

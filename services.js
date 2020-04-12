@@ -8,9 +8,9 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
     $rootScope.ideas_schema = ['id', 'title', 'description','team_members', 'tags','created_at', 'completion_date', 'created_by','team','category','status'];
     $rootScope.team_schema = ['id', 'team_name'];
     $rootScope.member_schema = ['id', 'name', 'email', 'team_id']
-    this.initializeWorkBook = function(){
+    this.initializeWorkBook = function(filePath){
         var deferred = $q.defer();
-        workbook.xlsx.readFile('data.xlsx').then(function() {
+        workbook.xlsx.readFile(filePath).then(function() {
             ideas_worksheet = workbook.getWorksheet('ideas');
             teams_worksheet = workbook.getWorksheet('teams');
             member_worksheet = workbook.getWorksheet('members');
@@ -115,7 +115,6 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
     };
 
     this.getMembers = function(){
-        console.log("hello");
         var deferred = $q.defer();
         $rootScope.members = [];
         member_worksheet.eachRow(function(row,index){
@@ -127,6 +126,8 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
                 $rootScope.members.push(rowData);
                 console.log(rowData);
             }
+
+            console.log($rootScope.members);
         });
         
         

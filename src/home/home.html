@@ -102,19 +102,19 @@
                     class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 w-full focus:outline-none focus:shadow-outline"
                     id="description"></textarea>
             </div>
-            <div class = "m-2 w-full">
+            <!-- <div class = "m-2 w-full">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="team_members">
                     Team Members
                 </label>
                 <input ng-model = "editedIdea.team_members" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 w-full focus:outline-none focus:shadow-outline" id="team_members" type="text" placeholder="Team Members">
-            </div>
+            </div> -->
             <div class = "m-2 w-1/3">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="completion_date">
                     Team
                 </label>
                 <div class = "relative">
-                    <select ng-model = "editedIdea.team" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
-                        <option ng-repeat = "eachTeam in teams"value="{{eachTeam.team_name}}" class = "status-option">{{eachTeam.team_name}}</option>
+                    <select ng-model = "editIdeaTeam" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
+                        <option ng-repeat = "eachTeam in teams" value="{{eachTeam}}" class = "status-option">{{eachTeam.team_name}}</option>
                     </select>
                 </div>
             </div>
@@ -134,7 +134,12 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="created_by">
                     Created By
                 </label>
-                <input ng-model = "editedIdea.created_by" class="border focus:shadow-outline px-3 py-2 rounded text-gray-700 focus:outline-none focus:shadow-outline" id="created_by" type="text" placeholder="Created By">
+                <div class = "relative">
+                    <select ng-model = "editedIdea.created_by" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
+                        <option ng-repeat = "eachMember in members | filter:{'team_id':selectedTeamId}" value="{{eachMember.name}}" class = "status-option">{{eachMember.name}}</option>
+                    </select>
+                </div>
+                
             </div>
             
             <div class = "p-2 sm:w-auto md:w-1/4">

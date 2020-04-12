@@ -20,6 +20,19 @@ ideaTree.controller('homeCtrl', ['$rootScope','$scope','IdeaSheetService', funct
         });
         
     };
+    
+    $scope.$watch(function(){
+        return $scope.editIdeaTeam;
+    }, function(){
+        if($scope.editIdeaTeam && $scope.editIdeaTeam[0] == '{'){
+            $scope.selectedTeamId = JSON.parse($scope.editIdeaTeam)["id"];
+            $scope.editedIdea.team = JSON.parse($scope.editIdeaTeam)["team_name"]; 
+            
+            $scope.editedIdea.created_by = '';
+        };
+        
+    }, true);
+
 
     $scope.toggleEdit = function(){
         $scope.editIdea = !$scope.editIdea;
@@ -37,6 +50,13 @@ ideaTree.controller('homeCtrl', ['$rootScope','$scope','IdeaSheetService', funct
                 'category' : $scope.selectedIdea.category,
                 'status':$scope.selectedIdea.status
             };
+            $rootScope.teams.forEach(element => {
+                console.log(element);
+                if(element.team_name == $scope.selectedIdea.team){
+                    $scope.editIdeaTeam = JSON.stringify({"id":element.id, "team_name":element.team_name});
+                }
+            });
+            console.log($scope.editedIdea.created_by);
         }
         
     }
