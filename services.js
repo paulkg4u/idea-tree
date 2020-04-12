@@ -40,7 +40,6 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
             deferred.resolve(true);
         }, function(error){
             alert("Error : could not open file at "+ filePath )
-            console.log(error);
             deferred.reject(false);
         });
         return deferred.promise;
@@ -87,7 +86,6 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
                     }
                 });
                 $rootScope.ideas.push(rowData);
-                console.log(rowData);
             }
         });
         deferred.resolve(true);
@@ -97,7 +95,6 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
     this.getTeams = function(){
         var deferred = $q.defer();
         $rootScope.teams = [];
-        console.log(teams_worksheet);
         teams_worksheet.eachRow(function(row, index){
             
             if(index > 1){
@@ -106,11 +103,9 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
                     rowData[key] = row.getCell(key).value;
                 });
                 $rootScope.teams.push(rowData);
-                console.log(rowData)
             }
         });
         
-        console.log($rootScope.teams);
         deferred.resolve(true);
         return deferred.promise;
     };
@@ -125,14 +120,11 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
                     rowData[key] = row.getCell(key).value;
                 });
                 $rootScope.members.push(rowData);
-                console.log(rowData);
             }
 
-            console.log($rootScope.members);
         });
         
         
-        console.log($rootScope.members);
         deferred.resolve(true);
         return deferred.promise;
     };

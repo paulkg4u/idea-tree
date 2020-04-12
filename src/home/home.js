@@ -86,7 +86,6 @@ ideaTree.controller('homeCtrl', ['$rootScope','$scope','IdeaSheetService', funct
         if($rootScope.filterTeam == null){
             $rootScope.filterTeam = '';
         }
-        console.log($rootScope.filterStatus);
         // console.log(idea.status.includes($rootScope.filterStatus) && idea.created_by.includes($rootScope.filterMember) && idea.team.includes($rootScope.filterTeam));
         return (idea.status.includes($rootScope.filterStatus) && idea.created_by.includes($rootScope.filterMember) && idea.team.includes($rootScope.filterTeam));
     }

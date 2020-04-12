@@ -8,6 +8,8 @@ var ideaTree = angular.module('ideaTree', ['ui.router', 'ngAnimate','ngAria','ng
 require('./services');
 
 ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$state, IdeaSheetService){
+    $rootScope.loadSpinner  = true;
+    $rootScope.loadingMessage = '';
     $rootScope.addingIdea = false;
     $rootScope.filterStatus = '';
     $rootScope.filterTeam = '';
@@ -19,13 +21,42 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     }else{
         filePath = '\\\\inunivsie02\\DTS_SRV\\TECOM\\TECOM_shared\\idea_tree-x64\\data.xlsx'
     }
+    $rootScope.loadingMessage = "Fetching Database";
     IdeaSheetService.initializeWorkBook(filePath).then(function(){
-        $state.go('home');
-        IdeaSheetService.getCurrentRows();
-        IdeaSheetService.getTeams();
-        IdeaSheetService.getMembers();
+        // $rootScope.loadSpinner = false;
+        //             $rootScope.loadingMessage = "";
+        // IdeaSheetService.getCurrentRows();
+        // IdeaSheetService.getTeams();
+        // IdeaSheetService.getMembers();
+        // $state.go('home');
+        $rootScope.loadingMessage = "Fetching Tasks";
+        IdeaSheetService.getCurrentRows().then(function(){
+            $rootScope.loadingMessage = "Fetching Teams";
+            IdeaSheetService.getTeams().then(function(){
+                $rootScope.loadingMessage = "Fetching Team Members";
+                IdeaSheetService.getMembers().then(function(){
+                    console.log("here");
+                    $rootScope.loadSpinner = false;
+                    $rootScope.loadingMessage = "";
+                    $state.go('home');
+                }, function(){
+                    $rootScope.loadSpinner = false;
+                    $rootScope.loadingMessage = "";
+                    alert("Error loading team members");
+                });
+            }, function(){
+                $rootScope.loadSpinner = false;
+                $rootScope.loadingMessage = "";
+                alert("Error loading team");
+            });
+        }, function(){
+            $rootScope.loadSpinner = false;
+            $rootScope.loadingMessage = "";
+            alert("Error loading tasks")
+        });
     }, function(){
-        console.log("error");
+        $rootScope.loadSpinner = false;
+        $rootScope.loadingMessage = "";
     });
     $rootScope.newIdea = {};
     $rootScope.newIdeaTeam = null;
@@ -48,7 +79,6 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     $rootScope.$watch(function(){
         return $rootScope.filterStatus;
     }, function(){
-        console.log($rootScope.filterStatus);
         if($rootScope.filterStatus == ''){
             $rootScope.filterStatus = null;
         }
@@ -76,7 +106,6 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
             IdeaSheetService.getCurrentRows().then(function(){
                 $rootScope.addingIdea = false;
             }, function(){
-                console.log("could not load new")
             });
         }, function(){
             $rootScope.addingIdea = false;
