@@ -12,7 +12,7 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     $rootScope.filterStatus = '';
     $rootScope.filterTeam = '';
     $rootScope.filterMember = '';
-    let dev = true;
+    let dev = false;
     let filePath;
     if (dev){
          filePath = 'data.xlsx'
