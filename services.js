@@ -39,6 +39,7 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
             ];
             deferred.resolve(true);
         }, function(error){
+            alert("Error : could not open file at "+ filePath )
             console.log(error);
             deferred.reject(false);
         });

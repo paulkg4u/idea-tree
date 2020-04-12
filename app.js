@@ -17,7 +17,7 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     if (dev){
          filePath = 'data.xlsx'
     }else{
-        filePath = '\\inunivsie02\DTS_SRV\TECOM\TECOM_shared\idea_tree-x64\data.xlsx'
+        filePath = '\\\\inunivsie02\\DTS_SRV\\TECOM\\TECOM_shared\\idea_tree-x64\\data.xlsx'
     }
     IdeaSheetService.initializeWorkBook(filePath).then(function(){
         $state.go('home');
