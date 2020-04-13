@@ -52,7 +52,7 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
         var deferred = $q.defer();
         ideas_worksheet = workbook.getWorksheet('ideas');
         ideas_worksheet.addRow(row_data);
-        workbook.xlsx.writeFile("data.xlsx").then(function() {
+        workbook.xlsx.writeFile($rootScope.filePath).then(function() {
             deferred.resolve(true);
         }, function(){
             deferred.reject(false);
@@ -65,7 +65,7 @@ ideaTree.service('IdeaSheetService', ['$rootScope', '$q', function($rootScope, $
         ideas_worksheet = workbook.getWorksheet('ideas');
         row = ideas_worksheet.getRow(index);
         row.values = data;
-        workbook.xlsx.writeFile("data.xlsx").then(function() {
+        workbook.xlsx.writeFile($rootScope.filePath).then(function() {
             deferred.resolve(true);
         }, function(){
             deferred.reject(false);

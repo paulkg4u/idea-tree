@@ -15,14 +15,13 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     $rootScope.filterTeam = '';
     $rootScope.filterMember = '';
     let dev = false;
-    let filePath;
     if (dev){
-         filePath = 'data.xlsx'
+         $rootScope.filePath = 'data.xlsx';
     }else{
-        filePath = '\\\\inunivsie02\\DTS_SRV\\TECOM\\TECOM_shared\\idea_tree-x64\\data.xlsx'
+        $rootScope.filePath = '\\\\inunivsie02\\DTS_SRV\\TECOM\\TECOM_shared\\idea_tree\\data.xlsx';
     }
     $rootScope.loadingMessage = "Fetching Database";
-    IdeaSheetService.initializeWorkBook(filePath).then(function(){
+    IdeaSheetService.initializeWorkBook($rootScope.filePath).then(function(){
         // $rootScope.loadSpinner = false;
         //             $rootScope.loadingMessage = "";
         // IdeaSheetService.getCurrentRows();
