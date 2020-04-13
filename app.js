@@ -94,7 +94,7 @@ ideaTree.run(['$rootScope','$state', 'IdeaSheetService',function($rootScope,$sta
     }, function(){
         if($rootScope.newIdeaTeam){
             $rootScope.selectedTeamId = JSON.parse($rootScope.newIdeaTeam)["id"];
-            $rootScope.newIdea.team = SON.parse($rootScope.newIdeaTeam)["team_name"]; 
+            $rootScope.newIdea.team = JSON.parse($rootScope.newIdeaTeam)["team_name"]; 
             $rootScope.newIdea.created_by = '';
         };
         

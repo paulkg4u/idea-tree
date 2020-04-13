@@ -113,7 +113,7 @@
                     Team
                 </label>
                 <div class = "relative">
-                    <select ng-model = "editIdeaTeam" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
+                    <select ng-disabled ="true" ng-model = "editIdeaTeam" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
                         <option ng-repeat = "eachTeam in teams" value="{{eachTeam}}" class = "status-option">{{eachTeam.team_name}}</option>
                     </select>
                 </div>
@@ -135,7 +135,7 @@
                     Created By
                 </label>
                 <div class = "relative">
-                    <select ng-model = "editedIdea.created_by" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
+                    <select ng-disabled ="true" ng-model = "editedIdea.created_by" class = "block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" id="">
                         <option ng-repeat = "eachMember in members | filter:{'team_id':selectedTeamId}" value="{{eachMember.name}}" class = "status-option">{{eachMember.name}}</option>
                     </select>
                 </div>
