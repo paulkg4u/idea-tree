@@ -19,7 +19,7 @@
     "angular-aria": "^1.7.9",
     "angular-material": "^1.1.21",
     "exceljs": "^3.8.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngstorage": "^0.3.11",
     "tailwindcss": "^1.2.0",
     "xlsx": "^0.15.5"
